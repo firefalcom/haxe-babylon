@@ -1,0 +1,14 @@
+{
+  "name": "babylon",
+  "license": "MIT",
+  "tags": ["js"],
+  "description": "Haxe externs for Babylon.js - a Javascript framework for building 3D games in HTML5.",
+  "contributors": ["crazyjul"],
+  "releasenote": "First release.",
+  "version": "3.2.0",
+  "url": "https://github.com/firefalcom/haxe-babylon",
+  "classPath": "src",
+  "dependencies": {
+    
+  }
+}
