@@ -8210,35 +8210,3 @@ typedef DataArray = Dynamic;
 	static public function Parse(source:Dynamic, scene:Scene, rootUrl:String):StandardRenderingPipeline;
 	static public var LuminanceSteps : Float;
 }
-@:native("BABYLON.BABYLONTopLevel") extern class BABYLONTopLevel {
-	static var CollisionWorker : String;
-	static function importScripts(urls:haxe.extern.Rest<String>):Void;
-	static var safePostMessage : Dynamic;
-	static var WorkerIncluded : Bool;
-	static var CameraInputTypes : { };
-	static var VRDisplay : { public var prototype : VRDisplay; public function new():VRDisplay; };
-	static var WebGLQuery : { public var prototype : WebGLQuery; public function new():WebGLQuery; };
-	static var WebGLSampler : { public var prototype : WebGLSampler; public function new():WebGLSampler; };
-	static var WebGLSync : { public var prototype : WebGLSync; public function new():WebGLSync; };
-	static var WebGLTransformFeedback : { public var prototype : WebGLTransformFeedback; public function new():WebGLTransformFeedback; };
-	static var WebGLVertexArrayObject : { public var prototype : WebGLVertexArrayObject; public function new():WebGLVertexArrayObject; };
-	static var ToGammaSpace : Dynamic;
-	static var ToLinearSpace : Dynamic;
-	static var Epsilon : Dynamic;
-	static function expandToProperty(callback:String, ?targetKey:Null<String>):Dynamic -> String -> Void;
-	static function serialize(?sourceName:String):Dynamic -> haxe.extern.EitherType<String, Symbol> -> Void;
-	static function serializeAsTexture(?sourceName:String):Dynamic -> haxe.extern.EitherType<String, Symbol> -> Void;
-	static function serializeAsColor3(?sourceName:String):Dynamic -> haxe.extern.EitherType<String, Symbol> -> Void;
-	static function serializeAsFresnelParameters(?sourceName:String):Dynamic -> haxe.extern.EitherType<String, Symbol> -> Void;
-	static function serializeAsVector2(?sourceName:String):Dynamic -> haxe.extern.EitherType<String, Symbol> -> Void;
-	static function serializeAsVector3(?sourceName:String):Dynamic -> haxe.extern.EitherType<String, Symbol> -> Void;
-	static function serializeAsMeshReference(?sourceName:String):Dynamic -> haxe.extern.EitherType<String, Symbol> -> Void;
-	static function serializeAsColorCurves(?sourceName:String):Dynamic -> haxe.extern.EitherType<String, Symbol> -> Void;
-	static function serializeAsColor4(?sourceName:String):Dynamic -> haxe.extern.EitherType<String, Symbol> -> Void;
-	static function serializeAsImageProcessingConfiguration(?sourceName:String):Dynamic -> haxe.extern.EitherType<String, Symbol> -> Void;
-	static function serializeAsQuaternion(?sourceName:String):Dynamic -> haxe.extern.EitherType<String, Symbol> -> Void;
-	static function serializeAsCameraReference(?sourceName:String):Dynamic -> haxe.extern.EitherType<String, Symbol> -> Void;
-	static function className(name:String, ?module:String):Dynamic -> Void;
-	static var DracoDecoderModule : Dynamic;
-	static var WebAssembly : Dynamic;
-}
