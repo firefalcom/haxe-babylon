@@ -15,6 +15,7 @@ import js.html.webgl.Framebuffer as WebGLFramebuffer;
 import js.html.webgl.Renderbuffer as WebGLRenderbuffer;
 import js.html.webgl.Texture as WebGLTexture;
 import js.html.webgl.ContextEvent as WebGLContextEvent;
+typedef ClientRect = js.html.DOMRect;
 
 typedef Undefined = {};
 
@@ -26,7 +27,7 @@ typedef Uint8ArrayConstructor = {};
 typedef Float32ArrayConstructor = {};
 typedef NavigatorUserMediaSuccessCallback = {};
 typedef NavigatorUserMediaErrorCallback = {};
-typedef ClientRect = {};
+
 typedef AudioBuffer = {};
 typedef AudioNode = {};
 typedef GainNode = {};
