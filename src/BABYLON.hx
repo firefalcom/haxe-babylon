@@ -2999,6 +2999,7 @@ typedef DataArray = Dynamic;
 	static public function Parse(source:Dynamic):ColorCurves;
 }
 @:native("BABYLON.EffectFallbacks") extern class EffectFallbacks {
+	public function new();
 	public function unBindMesh():Void;
 	public function addFallback(rank:Float, define:String):Void;
 	public function addCPUSkinningFallback(rank:Float, mesh:AbstractMesh):Void;
@@ -3006,6 +3007,7 @@ typedef DataArray = Dynamic;
 	public function reduce(currentDefines:String, effect:Effect):String;
 }
 @:native("BABYLON.EffectCreationOptions") extern class EffectCreationOptions {
+	public function new();
 	public var attributes : Array<String>;
 	public var uniformsNames : Array<String>;
 	public var uniformBuffersNames : Array<String>;
@@ -3181,6 +3183,7 @@ typedef DataArray = Dynamic;
 	public function cloneTo(other:MaterialDefines):Void;
 	public function reset():Void;
 	public function toString():String;
+	public function new();
 }
 @:native("BABYLON.Material") extern class Material implements IAnimatable {
 	static public var TriangleFillMode : Float;
@@ -3253,6 +3256,7 @@ typedef DataArray = Dynamic;
 	public function bindSceneUniformBuffer(effect:Effect, sceneUbo:UniformBuffer):Void;
 	public function bindView(effect:Effect):Void;
 	public function bindViewProjection(effect:Effect):Void;
+	private function _shouldTurnAlphaTestOn(mesh: AbstractMesh): Bool;
 	public function unbind():Void;
 	public function getActiveTextures():Array<BaseTexture>;
 	public function hasTexture(texture:BaseTexture):Bool;
@@ -3294,8 +3298,11 @@ typedef DataArray = Dynamic;
 	public function getSubMaterial(index:Float):Null<Material>;
 }
 @:native("BABYLON.PushMaterial") extern class PushMaterial extends Material {
+	private var _activeEffect: Effect;
 	public function new(name:String, scene:Scene):Void;
 	public function bindOnlyNormalMatrix(normalMatrix:Matrix):Void;
+	public function _mustRebind(scene: Scene, effect: Effect, ?visibility: Float): Bool;
+	public function _afterBind(mesh: Mesh, ?effect: Null<Effect>): Void;
 }
 @:native("BABYLON.ShaderMaterial") extern class ShaderMaterial extends Material {
 	public function new(name:String, scene:Scene, shaderPath:Dynamic, options:Dynamic):Void;
