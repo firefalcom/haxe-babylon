@@ -6219,6 +6219,7 @@ typedef DataArray = Dynamic;
 	public var disposeWhenFinishedAnimating : Bool;
 	public var animations : Array<Animation>;
 	public var isPickable : Bool;
+	public var isVisible : Bool;
 	public var actionManager : ActionManager;
 	public var size : Float;
 	public function new(name:String, manager:SpriteManager):Void;
