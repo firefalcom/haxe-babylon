@@ -1,6 +1,8 @@
 import js.html.Event;
 import js.html.*;
 
+import js.Promise;
+
 import js.html.ImageElement as HTMLImageElement;
 import js.html.Element as HTMLElement;
 import js.html.ButtonElement as HTMLButtonElement;
@@ -32,7 +34,7 @@ typedef AudioBuffer = {};
 typedef AudioNode = {};
 typedef GainNode = {};
 typedef WebGLObject = {};
-class Promise<_T_>{}
+//class Promise<_T_>{}
 class ReadonlyArray<_T_>{}
 class Partial<_T_>{}
 class PromiseLike<_T_>{}
