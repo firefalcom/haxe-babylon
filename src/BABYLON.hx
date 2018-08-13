@@ -34,7 +34,6 @@ typedef AudioBuffer = {};
 typedef AudioNode = {};
 typedef GainNode = {};
 typedef WebGLObject = {};
-//class Promise<_T_>{}
 class ReadonlyArray<_T_>{}
 class Partial<_T_>{}
 class PromiseLike<_T_>{}
