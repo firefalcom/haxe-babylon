@@ -12,7 +12,11 @@ import js.html.CanvasElement as HTMLCanvasElement;
 import js.html.WheelEvent as MouseWheelEvent;
 
 import js.html.webgl.ContextAttributes as WebGLContextAttributes;
+#if (haxe_ver >= 4.0)
+import js.html.webgl.VertexArrayObject as WebGLVertexArrayObject;
+#else
 import js.html.webgl.VertexArrayObjectOES as WebGLVertexArrayObject;
+#end
 import js.html.webgl.Framebuffer as WebGLFramebuffer;
 import js.html.webgl.Renderbuffer as WebGLRenderbuffer;
 import js.html.webgl.Texture as WebGLTexture;
