@@ -793,13 +793,14 @@ typedef DataArray = Dynamic;
 @:native("BABYLON.ValueCondition") extern class ValueCondition extends Condition {
 	public var propertyPath : String;
 	public var value : Dynamic;
-	public var operator : Float;
+	@:native("operator")
+	public var _operator : Float;
 	static public var IsEqual : Float;
 	static public var IsDifferent : Float;
 	static public var IsGreater : Float;
 	static public var IsLesser : Float;
-	public function new(actionManager:ActionManager, target:Dynamic, propertyPath:String, value:Dynamic, ?operator:Float):Void;
-	static public function GetOperatorName(operator:Float):String;
+	public function new(actionManager:ActionManager, target:Dynamic, propertyPath:String, value:Dynamic, ?_operator:Float):Void;
+	static public function GetOperatorName(_operator:Float):String;
 }
 @:native("BABYLON.PredicateCondition") extern class PredicateCondition extends Condition {
 	public var predicate : Void -> Bool;

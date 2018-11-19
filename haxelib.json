@@ -5,7 +5,7 @@
   "description": "Haxe externs for Babylon.js - a complete JavaScript framework for building 3D games with HTML 5 and WebGL",
   "contributors": ["crazyjul", "gogoprog"],
   "releasenote": "Generated from Babylon.js 3.2",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "url": "https://github.com/firefalcom/haxe-babylon",
   "classPath": "src",
   "dependencies": {
