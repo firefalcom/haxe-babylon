@@ -1,7 +1,7 @@
 import js.html.Event;
 import js.html.*;
 
-import js.Promise;
+import js.lib.Promise;
 
 import js.html.ImageElement as HTMLImageElement;
 import js.html.Element as HTMLElement;
@@ -49,8 +49,8 @@ typedef EXT_texture_filter_anisotropic = {};
 typedef PostProcessOptions = {};
 typedef Symbol = {};
 
-typedef FloatArray = haxe.ds.Either<Array<Float>, Float32Array>;
-typedef IndicesArray =  Dynamic;// haxe.ds.Either<number[] | Int32Array | Uint32Array | Uint16Array;
+typedef FloatArray = haxe.ds.Either<Array<Float>, js.lib.Float32Array>;
+typedef IndicesArray =  Dynamic;// haxe.ds.Either<number[] | js.lib.Int32Array | js.lib.Uint32Array | Uint16Array;
 typedef DataArray = Dynamic;
 
 
@@ -177,10 +177,10 @@ typedef DataArray = Dynamic;
 	var TEXTURE_COMPARE_MODE : Float;
 	var COMPARE_REF_TO_TEXTURE : Float;
 	var TEXTURE_WRAP_R : Float;
-	@:overload(function(target:Float, level:Float, internalformat:Float, width:Float, height:Float, depth:Float, border:Float, format:Float, type:Float, pixels:ArrayBufferView, offset:Float):Void { })
+	@:overload(function(target:Float, level:Float, internalformat:Float, width:Float, height:Float, depth:Float, border:Float, format:Float, type:Float, pixels:js.lib.ArrayBufferView, offset:Float):Void { })
 	@:overload(function(target:Float, level:Float, internalformat:Float, width:Float, height:Float, depth:Float, border:Float, format:Float, type:Float, pixels:haxe.extern.EitherType<ImageBitmap, haxe.extern.EitherType<ImageData, haxe.extern.EitherType<HTMLVideoElement, haxe.extern.EitherType<HTMLImageElement, HTMLCanvasElement>>>>):Void { })
-	function texImage3D(target:Float, level:Float, internalformat:Float, width:Float, height:Float, depth:Float, border:Float, format:Float, type:Float, pixels:ArrayBufferView):Void;
-	function compressedTexImage3D(target:Float, level:Float, internalformat:Float, width:Float, height:Float, depth:Float, border:Float, data:ArrayBufferView, ?offset:Float, ?length:Float):Void;
+	function texImage3D(target:Float, level:Float, internalformat:Float, width:Float, height:Float, depth:Float, border:Float, format:Float, type:Float, pixels:js.lib.ArrayBufferView):Void;
+	function compressedTexImage3D(target:Float, level:Float, internalformat:Float, width:Float, height:Float, depth:Float, border:Float, data:js.lib.ArrayBufferView, ?offset:Float, ?length:Float):Void;
 	var TRANSFORM_FEEDBACK : Float;
 	var INTERLEAVED_ATTRIBS : Float;
 	var TRANSFORM_FEEDBACK_BUFFER : Float;
@@ -366,7 +366,7 @@ typedef DataArray = Dynamic;
 	public var preventDefaultOnPointerDown : Bool;
 	public var metadata : Dynamic;
 	public var loadingPluginName : String;
-	public var disableOfflineSupportExceptionRules : Array<js.RegExp>;
+	public var disableOfflineSupportExceptionRules : Array<js.lib.RegExp>;
 	public var onDisposeObservable : Observable<Scene>;
 	public var onDispose : Void -> Void;
 	public var onBeforeRenderObservable : Observable<Scene>;
@@ -710,8 +710,8 @@ typedef DataArray = Dynamic;
 	public function setRenderingOrder(renderingGroupId:Float, ?opaqueSortCompareFn:Null<SubMesh -> SubMesh -> Float>, ?alphaTestSortCompareFn:Null<SubMesh -> SubMesh -> Float>, ?transparentSortCompareFn:Null<SubMesh -> SubMesh -> Float>):Void;
 	public function setRenderingAutoClearDepthStencil(renderingGroupId:Float, autoClearDepthStencil:Bool, ?depth:Bool, ?stencil:Bool):Void;
 	public function markAllMaterialsAsDirty(flag:Float, ?predicate:Material -> Bool):Void;
-	public function _loadFile(url:String, onSuccess:haxe.extern.EitherType<String, ArrayBuffer> -> ?String -> Void, ?onProgress:Dynamic -> Void, ?useDatabase:Bool, ?useArrayBuffer:Bool, ?onError:?XMLHttpRequest -> ?Dynamic -> Void):IFileRequest;
-	public function _loadFileAsync(url:String, ?useDatabase:Bool, ?useArrayBuffer:Bool):Promise<haxe.extern.EitherType<String, ArrayBuffer>>;
+	public function _loadFile(url:String, onSuccess:haxe.extern.EitherType<String, js.lib.ArrayBuffer> -> ?String -> Void, ?onProgress:Dynamic -> Void, ?useDatabase:Bool, ?useArrayBuffer:Bool, ?onError:?XMLHttpRequest -> ?Dynamic -> Void):IFileRequest;
+	public function _loadFileAsync(url:String, ?useDatabase:Bool, ?useArrayBuffer:Bool):Promise<haxe.extern.EitherType<String, js.lib.ArrayBuffer>>;
 }
 @:native("BABYLON.Action") extern class Action {
 	public var triggerOptions : Dynamic;
@@ -1111,9 +1111,9 @@ typedef DataArray = Dynamic;
 	public var DEBUGCANVASSIZE : { public var width : Float; public var height : Float; };
 	public function new(scene:Scene):Void;
 	public function getFrequencyBinCount():Float;
-	public function getByteFrequencyData():Uint8Array;
-	public function getByteTimeDomainData():Uint8Array;
-	public function getFloatFrequencyData():Float32Array;
+	public function getByteFrequencyData():js.lib.Uint8Array;
+	public function getByteTimeDomainData():js.lib.Uint8Array;
+	public function getFloatFrequencyData():js.lib.Float32Array;
 	public function drawDebugCanvas():Void;
 	public function stopDebugCanvas():Void;
 	public function connectAudioNodes(inputAudioNode:AudioNode, outputAudioNode:AudioNode):Void;
@@ -1308,7 +1308,7 @@ typedef DataArray = Dynamic;
 	public var animationPropertiesOverride : Null<AnimationPropertiesOverride>;
 	public var onBeforeComputeObservable : Observable<Skeleton>;
 	public function new(name:String, id:String, scene:Scene):Void;
-	public function getTransformMatrices(mesh:AbstractMesh):Float32Array;
+	public function getTransformMatrices(mesh:AbstractMesh):js.lib.Float32Array;
 	public function getScene():Scene;
 	public function toString(?fullDetails:Bool):String;
 	public function getBoneIndexByName(name:String):Float;
@@ -1322,7 +1322,7 @@ typedef DataArray = Dynamic;
 	public function _markAsDirty():Void;
 	public function _registerMeshWithPoseMatrix(mesh:AbstractMesh):Void;
 	public function _unregisterMeshWithPoseMatrix(mesh:AbstractMesh):Void;
-	public function _computeTransformMatrices(targetMatrix:Float32Array, initialSkinMatrix:Null<Matrix>):Void;
+	public function _computeTransformMatrices(targetMatrix:js.lib.Float32Array, initialSkinMatrix:Null<Matrix>):Void;
 	public function prepare():Void;
 	public function getAnimatables():Array<IAnimatable>;
 	public function clone(name:String, id:String):Skeleton;
@@ -1391,9 +1391,9 @@ typedef DataArray = Dynamic;
 }
 @:native("BABYLON.SerializedGeometry") interface SerializedGeometry {
 	var id : String;
-	var positions : Float32Array;
-	var indices : Uint32Array;
-	var normals : Float32Array;
+	var positions : js.lib.Float32Array;
+	var indices : js.lib.Uint32Array;
+	var normals : js.lib.Float32Array;
 }
 @:native("BABYLON.BabylonMessage") interface BabylonMessage {
 	var taskType : WorkerTaskType;
@@ -1839,7 +1839,7 @@ typedef DataArray = Dynamic;
 }
 @:native("BABYLON.VREyeParameters") interface VREyeParameters {
 	var fieldOfView : VRFieldOfView;
-	var offset : Float32Array;
+	var offset : js.lib.Float32Array;
 	var renderHeight : Float;
 	var renderWidth : Float;
 }
@@ -1850,25 +1850,25 @@ typedef DataArray = Dynamic;
 	var upDegrees : Float;
 }
 @:native("BABYLON.VRFrameData") interface VRFrameData {
-	var leftProjectionMatrix : Float32Array;
-	var leftViewMatrix : Float32Array;
+	var leftProjectionMatrix : js.lib.Float32Array;
+	var leftViewMatrix : js.lib.Float32Array;
 	var pose : VRPose;
-	var rightProjectionMatrix : Float32Array;
-	var rightViewMatrix : Float32Array;
+	var rightProjectionMatrix : js.lib.Float32Array;
+	var rightViewMatrix : js.lib.Float32Array;
 	var timestamp : Float;
 }
 @:native("BABYLON.VRPose") interface VRPose {
-	var angularAcceleration : Float32Array;
-	var angularVelocity : Float32Array;
-	var linearAcceleration : Float32Array;
-	var linearVelocity : Float32Array;
-	var orientation : Float32Array;
-	var position : Float32Array;
+	var angularAcceleration : js.lib.Float32Array;
+	var angularVelocity : js.lib.Float32Array;
+	var linearAcceleration : js.lib.Float32Array;
+	var linearVelocity : js.lib.Float32Array;
+	var orientation : js.lib.Float32Array;
+	var position : js.lib.Float32Array;
 	var timestamp : Float;
 }
 @:native("BABYLON.VRStageParameters") interface VRStageParameters {
 	@:optional
-	var sittingToStandingTransform : Float32Array;
+	var sittingToStandingTransform : js.lib.Float32Array;
 	@:optional
 	var sizeX : Float;
 	@:optional
@@ -2187,7 +2187,7 @@ typedef DataArray = Dynamic;
 	public function bindUniformBuffer(buffer:Null<WebGLBuffer>):Void;
 	public function bindUniformBufferBase(buffer:WebGLBuffer, location:Float):Void;
 	public function bindUniformBlock(shaderProgram:WebGLProgram, blockName:String, index:Float):Void;
-	public function updateArrayBuffer(data:Float32Array):Void;
+	public function updateArrayBuffer(data:js.lib.Float32Array):Void;
 	public function recordVertexArrayObject(vertexBuffers:{ }, indexBuffer:Null<WebGLBuffer>, effect:Effect):WebGLVertexArrayObject;
 	public function bindVertexArrayObject(vertexArrayObject:WebGLVertexArrayObject, indexBuffer:Null<WebGLBuffer>):Void;
 	public function bindBuffersDirectly(vertexBuffer:WebGLBuffer, indexBuffer:WebGLBuffer, vertexDeclaration:Array<Float>, vertexStrideSize:Float, effect:Effect):Void;
@@ -2197,7 +2197,7 @@ typedef DataArray = Dynamic;
 	public function _releaseBuffer(buffer:WebGLBuffer):Bool;
 	public function createInstancesBuffer(capacity:Float):WebGLBuffer;
 	public function deleteInstancesBuffer(buffer:WebGLBuffer):Void;
-	public function updateAndBindInstancesBuffer(instancesBuffer:WebGLBuffer, data:Float32Array, offsetLocations:haxe.extern.EitherType<Array<Float>, Array<InstancingAttributeInfo>>):Void;
+	public function updateAndBindInstancesBuffer(instancesBuffer:WebGLBuffer, data:js.lib.Float32Array, offsetLocations:haxe.extern.EitherType<Array<Float>, Array<InstancingAttributeInfo>>):Void;
 	public function applyStates():Void;
 	public function draw(useTriangles:Bool, indexStart:Float, indexCount:Float, ?instancesCount:Float):Void;
 	public function drawPointClouds(verticesStart:Float, verticesCount:Float, ?instancesCount:Float):Void;
@@ -2213,22 +2213,22 @@ typedef DataArray = Dynamic;
 	public function getUniforms(shaderProgram:WebGLProgram, uniformsNames:Array<String>):Array<Null<WebGLUniformLocation>>;
 	public function getAttributes(shaderProgram:WebGLProgram, attributesNames:Array<String>):Array<Float>;
 	public function enableEffect(effect:Null<Effect>):Void;
-	public function setIntArray(uniform:Null<WebGLUniformLocation>, array:Int32Array):Void;
-	public function setIntArray2(uniform:Null<WebGLUniformLocation>, array:Int32Array):Void;
-	public function setIntArray3(uniform:Null<WebGLUniformLocation>, array:Int32Array):Void;
-	public function setIntArray4(uniform:Null<WebGLUniformLocation>, array:Int32Array):Void;
-	public function setFloatArray(uniform:Null<WebGLUniformLocation>, array:Float32Array):Void;
-	public function setFloatArray2(uniform:Null<WebGLUniformLocation>, array:Float32Array):Void;
-	public function setFloatArray3(uniform:Null<WebGLUniformLocation>, array:Float32Array):Void;
-	public function setFloatArray4(uniform:Null<WebGLUniformLocation>, array:Float32Array):Void;
+	public function setIntArray(uniform:Null<WebGLUniformLocation>, array:js.lib.Int32Array):Void;
+	public function setIntArray2(uniform:Null<WebGLUniformLocation>, array:js.lib.Int32Array):Void;
+	public function setIntArray3(uniform:Null<WebGLUniformLocation>, array:js.lib.Int32Array):Void;
+	public function setIntArray4(uniform:Null<WebGLUniformLocation>, array:js.lib.Int32Array):Void;
+	public function setFloatArray(uniform:Null<WebGLUniformLocation>, array:js.lib.Float32Array):Void;
+	public function setFloatArray2(uniform:Null<WebGLUniformLocation>, array:js.lib.Float32Array):Void;
+	public function setFloatArray3(uniform:Null<WebGLUniformLocation>, array:js.lib.Float32Array):Void;
+	public function setFloatArray4(uniform:Null<WebGLUniformLocation>, array:js.lib.Float32Array):Void;
 	public function setArray(uniform:Null<WebGLUniformLocation>, array:Array<Float>):Void;
 	public function setArray2(uniform:Null<WebGLUniformLocation>, array:Array<Float>):Void;
 	public function setArray3(uniform:Null<WebGLUniformLocation>, array:Array<Float>):Void;
 	public function setArray4(uniform:Null<WebGLUniformLocation>, array:Array<Float>):Void;
-	public function setMatrices(uniform:Null<WebGLUniformLocation>, matrices:Float32Array):Void;
+	public function setMatrices(uniform:Null<WebGLUniformLocation>, matrices:js.lib.Float32Array):Void;
 	public function setMatrix(uniform:Null<WebGLUniformLocation>, matrix:Matrix):Void;
-	public function setMatrix3x3(uniform:Null<WebGLUniformLocation>, matrix:Float32Array):Void;
-	public function setMatrix2x2(uniform:Null<WebGLUniformLocation>, matrix:Float32Array):Void;
+	public function setMatrix3x3(uniform:Null<WebGLUniformLocation>, matrix:js.lib.Float32Array):Void;
+	public function setMatrix2x2(uniform:Null<WebGLUniformLocation>, matrix:js.lib.Float32Array):Void;
 	public function setInt(uniform:Null<WebGLUniformLocation>, value:Float):Void;
 	public function setFloat(uniform:Null<WebGLUniformLocation>, value:Float):Void;
 	public function setFloat2(uniform:Null<WebGLUniformLocation>, x:Float, y:Float):Void;
@@ -2252,9 +2252,9 @@ typedef DataArray = Dynamic;
 	public function wipeCaches(?bruteForce:Bool):Void;
 	public function setTextureFormatToUse(formatsAvailable:Array<String>):Null<String>;
 	public function _createTexture():WebGLTexture;
-	public function createTexture(urlArg:Null<String>, noMipmap:Bool, invertY:Bool, scene:Null<Scene>, ?samplingMode:Float, ?onLoad:Null<Void -> Void>, ?onError:Null<String -> Dynamic -> Void>, ?buffer:Null<haxe.extern.EitherType<ArrayBuffer, HTMLImageElement>>, ?fallback:Null<InternalTexture>, ?format:Null<Float>):InternalTexture;
-	public function updateRawTexture(texture:Null<InternalTexture>, data:Null<ArrayBufferView>, format:Float, invertY:Bool, ?compression:Null<String>, ?type:Float):Void;
-	public function createRawTexture(data:Null<ArrayBufferView>, width:Float, height:Float, format:Float, generateMipMaps:Bool, invertY:Bool, samplingMode:Float, ?compression:Null<String>, ?type:Float):InternalTexture;
+	public function createTexture(urlArg:Null<String>, noMipmap:Bool, invertY:Bool, scene:Null<Scene>, ?samplingMode:Float, ?onLoad:Null<Void -> Void>, ?onError:Null<String -> Dynamic -> Void>, ?buffer:Null<haxe.extern.EitherType<js.lib.ArrayBuffer, HTMLImageElement>>, ?fallback:Null<InternalTexture>, ?format:Null<Float>):InternalTexture;
+	public function updateRawTexture(texture:Null<InternalTexture>, data:Null<js.lib.ArrayBufferView>, format:Float, invertY:Bool, ?compression:Null<String>, ?type:Float):Void;
+	public function createRawTexture(data:Null<js.lib.ArrayBufferView>, width:Float, height:Float, format:Float, generateMipMaps:Bool, invertY:Bool, samplingMode:Float, ?compression:Null<String>, ?type:Float):InternalTexture;
 	public function createDynamicTexture(width:Float, height:Float, generateMipMaps:Bool, samplingMode:Float):InternalTexture;
 	public function updateTextureSamplingMode(samplingMode:Float, texture:InternalTexture):Void;
 	public function updateDynamicTexture(texture:Null<InternalTexture>, canvas:HTMLCanvasElement, invertY:Bool, ?premulAlpha:Bool, ?format:Float):Void;
@@ -2266,16 +2266,16 @@ typedef DataArray = Dynamic;
 	public function createMultipleRenderTarget(size:Dynamic, options:IMultiRenderTargetOptions):Array<InternalTexture>;
 	public function updateRenderTargetTextureSampleCount(texture:Null<InternalTexture>, samples:Float):Float;
 	public function updateMultipleRenderTargetTextureSampleCount(textures:Null<Array<InternalTexture>>, samples:Float):Float;
-	public function _uploadDataToTexture(target:Float, lod:Float, internalFormat:Float, width:Float, height:Float, format:Float, type:Float, data:ArrayBufferView):Void;
-	public function _uploadCompressedDataToTexture(target:Float, lod:Float, internalFormat:Float, width:Float, height:Float, data:ArrayBufferView):Void;
+	public function _uploadDataToTexture(target:Float, lod:Float, internalFormat:Float, width:Float, height:Float, format:Float, type:Float, data:js.lib.ArrayBufferView):Void;
+	public function _uploadCompressedDataToTexture(target:Float, lod:Float, internalFormat:Float, width:Float, height:Float, data:js.lib.ArrayBufferView):Void;
 	public function createRenderTargetCubeTexture(size:Float, ?options:Partial<RenderTargetCreationOptions>):InternalTexture;
 	public function createPrefilteredCubeTexture(rootUrl:String, scene:Null<Scene>, scale:Float, offset:Float, ?onLoad:Null<Null<InternalTexture> -> Void>, ?onError:Null<?String -> ?Dynamic -> Void>, ?format:Float, ?forcedExtension:Dynamic):InternalTexture;
 	public function createCubeTexture(rootUrl:String, scene:Null<Scene>, files:Null<Array<String>>, ?noMipmap:Bool, ?onLoad:Null<?Dynamic -> Void>, ?onError:Null<?String -> ?Dynamic -> Void>, ?format:Float, ?forcedExtension:Dynamic, ?createPolynomials:Bool):InternalTexture;
-	public function updateRawCubeTexture(texture:InternalTexture, data:Array<ArrayBufferView>, format:Float, type:Float, invertY:Bool, ?compression:Null<String>, ?level:Float):Void;
-	public function createRawCubeTexture(data:Null<Array<ArrayBufferView>>, size:Float, format:Float, type:Float, generateMipMaps:Bool, invertY:Bool, samplingMode:Float, ?compression:Null<String>):InternalTexture;
-	public function createRawCubeTextureFromUrl(url:String, scene:Scene, size:Float, format:Float, type:Float, noMipmap:Bool, callback:ArrayBuffer -> Null<Array<ArrayBufferView>>, mipmapGenerator:Null<Array<ArrayBufferView> -> Array<Array<ArrayBufferView>>>, ?onLoad:Null<Void -> Void>, ?onError:Null<?String -> ?Dynamic -> Void>, ?samplingMode:Float, ?invertY:Bool):InternalTexture;
-	public function updateRawTexture3D(texture:InternalTexture, data:Null<ArrayBufferView>, format:Float, invertY:Bool, ?compression:Null<String>):Void;
-	public function createRawTexture3D(data:Null<ArrayBufferView>, width:Float, height:Float, depth:Float, format:Float, generateMipMaps:Bool, invertY:Bool, samplingMode:Float, ?compression:Null<String>):InternalTexture;
+	public function updateRawCubeTexture(texture:InternalTexture, data:Array<js.lib.ArrayBufferView>, format:Float, type:Float, invertY:Bool, ?compression:Null<String>, ?level:Float):Void;
+	public function createRawCubeTexture(data:Null<Array<js.lib.ArrayBufferView>>, size:Float, format:Float, type:Float, generateMipMaps:Bool, invertY:Bool, samplingMode:Float, ?compression:Null<String>):InternalTexture;
+	public function createRawCubeTextureFromUrl(url:String, scene:Scene, size:Float, format:Float, type:Float, noMipmap:Bool, callback:js.lib.ArrayBuffer -> Null<Array<js.lib.ArrayBufferView>>, mipmapGenerator:Null<Array<js.lib.ArrayBufferView> -> Array<Array<js.lib.ArrayBufferView>>>, ?onLoad:Null<Void -> Void>, ?onError:Null<?String -> ?Dynamic -> Void>, ?samplingMode:Float, ?invertY:Bool):InternalTexture;
+	public function updateRawTexture3D(texture:InternalTexture, data:Null<js.lib.ArrayBufferView>, format:Float, invertY:Bool, ?compression:Null<String>):Void;
+	public function createRawTexture3D(data:Null<js.lib.ArrayBufferView>, width:Float, height:Float, depth:Float, format:Float, generateMipMaps:Bool, invertY:Bool, samplingMode:Float, ?compression:Null<String>):InternalTexture;
 	public function _releaseFramebufferObjects(texture:InternalTexture):Void;
 	public function _releaseTexture(texture:InternalTexture):Void;
 	public function bindSamplers(effect:Effect):Void;
@@ -2287,7 +2287,7 @@ typedef DataArray = Dynamic;
 	public function setDepthStencilTexture(channel:Float, uniform:Null<WebGLUniformLocation>, texture:Null<RenderTargetTexture>):Void;
 	public function setTextureArray(channel:Float, uniform:Null<WebGLUniformLocation>, textures:Array<BaseTexture>):Void;
 	public function _setAnisotropicLevel(target:Float, texture:BaseTexture):Void;
-	public function readPixels(x:Float, y:Float, width:Float, height:Float):Uint8Array;
+	public function readPixels(x:Float, y:Float, width:Float, height:Float):js.lib.Uint8Array;
 	public function addExternalData<T>(key:String, data:T):Bool;
 	public function getExternalData<T>(key:String):T;
 	public function getOrAddExternalDataWithFactory<T>(key:String, factory:String -> T):T;
@@ -2307,7 +2307,7 @@ typedef DataArray = Dynamic;
 	public function getError():Float;
 	public function getFps():Float;
 	public function getDeltaTime():Float;
-	public function _readTexturePixels(texture:InternalTexture, width:Float, height:Float, ?faceIndex:Float):ArrayBufferView;
+	public function _readTexturePixels(texture:InternalTexture, width:Float, height:Float, ?faceIndex:Float):js.lib.ArrayBufferView;
 	public function _getWebGLTextureType(type:Float):Float;
 	public function _getRGBABufferInternalSizedFormat(type:Float, ?format:Float):Float;
 	public function _getRGBAMultiSampleBufferFormat(type:Float):Float;
@@ -2326,8 +2326,8 @@ typedef DataArray = Dynamic;
 	public function endTransformFeedback():Void;
 	public function setTranformFeedbackVaryings(program:WebGLProgram, value:Array<String>):Void;
 	public function bindTransformFeedbackBuffer(value:Null<WebGLBuffer>):Void;
-	public function _loadFile(url:String, onSuccess:haxe.extern.EitherType<String, ArrayBuffer> -> ?String -> Void, ?onProgress:Dynamic -> Void, ?database:Database, ?useArrayBuffer:Bool, ?onError:?XMLHttpRequest -> ?Dynamic -> Void):IFileRequest;
-	public function _loadFileAsync(url:String, ?database:Database, ?useArrayBuffer:Bool):Promise<haxe.extern.EitherType<String, ArrayBuffer>>;
+	public function _loadFile(url:String, onSuccess:haxe.extern.EitherType<String, js.lib.ArrayBuffer> -> ?String -> Void, ?onProgress:Dynamic -> Void, ?database:Database, ?useArrayBuffer:Bool, ?onError:?XMLHttpRequest -> ?Dynamic -> Void):IFileRequest;
+	public function _loadFileAsync(url:String, ?database:Database, ?useArrayBuffer:Bool):Promise<haxe.extern.EitherType<String, js.lib.ArrayBuffer>>;
 	static public function isSupported():Bool;
 }
 @:native("BABYLON.NullEngineOptions") extern class NullEngineOptions {
@@ -3072,22 +3072,22 @@ typedef DataArray = Dynamic;
 	public function bindUniformBuffer(buffer:WebGLBuffer, name:String):Void;
 	public function bindUniformBlock(blockName:String, index:Float):Void;
 	public function setInt(uniformName:String, value:Float):Effect;
-	public function setIntArray(uniformName:String, array:Int32Array):Effect;
-	public function setIntArray2(uniformName:String, array:Int32Array):Effect;
-	public function setIntArray3(uniformName:String, array:Int32Array):Effect;
-	public function setIntArray4(uniformName:String, array:Int32Array):Effect;
-	public function setFloatArray(uniformName:String, array:Float32Array):Effect;
-	public function setFloatArray2(uniformName:String, array:Float32Array):Effect;
-	public function setFloatArray3(uniformName:String, array:Float32Array):Effect;
-	public function setFloatArray4(uniformName:String, array:Float32Array):Effect;
+	public function setIntArray(uniformName:String, array:js.lib.Int32Array):Effect;
+	public function setIntArray2(uniformName:String, array:js.lib.Int32Array):Effect;
+	public function setIntArray3(uniformName:String, array:js.lib.Int32Array):Effect;
+	public function setIntArray4(uniformName:String, array:js.lib.Int32Array):Effect;
+	public function setFloatArray(uniformName:String, array:js.lib.Float32Array):Effect;
+	public function setFloatArray2(uniformName:String, array:js.lib.Float32Array):Effect;
+	public function setFloatArray3(uniformName:String, array:js.lib.Float32Array):Effect;
+	public function setFloatArray4(uniformName:String, array:js.lib.Float32Array):Effect;
 	public function setArray(uniformName:String, array:Array<Float>):Effect;
 	public function setArray2(uniformName:String, array:Array<Float>):Effect;
 	public function setArray3(uniformName:String, array:Array<Float>):Effect;
 	public function setArray4(uniformName:String, array:Array<Float>):Effect;
-	public function setMatrices(uniformName:String, matrices:Float32Array):Effect;
+	public function setMatrices(uniformName:String, matrices:js.lib.Float32Array):Effect;
 	public function setMatrix(uniformName:String, matrix:Matrix):Effect;
-	public function setMatrix3x3(uniformName:String, matrix:Float32Array):Effect;
-	public function setMatrix2x2(uniformName:String, matrix:Float32Array):Effect;
+	public function setMatrix3x3(uniformName:String, matrix:js.lib.Float32Array):Effect;
+	public function setMatrix2x2(uniformName:String, matrix:js.lib.Float32Array):Effect;
 	public function setFloat(uniformName:String, value:Float):Effect;
 	public function setBool(uniformName:String, bool:Bool):Effect;
 	public function setVector2(uniformName:String, vector2:Vector2):Effect;
@@ -3324,8 +3324,8 @@ typedef DataArray = Dynamic;
 	public function setVector3(name:String, value:Vector3):ShaderMaterial;
 	public function setVector4(name:String, value:Vector4):ShaderMaterial;
 	public function setMatrix(name:String, value:Matrix):ShaderMaterial;
-	public function setMatrix3x3(name:String, value:Float32Array):ShaderMaterial;
-	public function setMatrix2x2(name:String, value:Float32Array):ShaderMaterial;
+	public function setMatrix3x3(name:String, value:js.lib.Float32Array):ShaderMaterial;
+	public function setMatrix2x2(name:String, value:js.lib.Float32Array):ShaderMaterial;
 	public function setArray2(name:String, value:Array<Float>):ShaderMaterial;
 	public function setArray3(name:String, value:Array<Float>):ShaderMaterial;
 }
@@ -3499,8 +3499,8 @@ typedef DataArray = Dynamic;
 	static public var FresnelEnabled : Bool;
 }
 @:native("BABYLON.UniformBuffer") extern class UniformBuffer {
-	public var updateMatrix3x3 : String -> Float32Array -> Void;
-	public var updateMatrix2x2 : String -> Float32Array -> Void;
+	public var updateMatrix3x3 : String -> js.lib.Float32Array -> Void;
+	public var updateMatrix2x2 : String -> js.lib.Float32Array -> Void;
 	public var updateFloat : String -> Float -> Void;
 	public var updateFloat2 : String -> Float -> Float -> ?String -> Void;
 	public var updateFloat3 : String -> Float -> Float -> Float -> ?String -> Void;
@@ -3514,7 +3514,7 @@ typedef DataArray = Dynamic;
 	public var useUbo : Bool;
 	public var isSync : Bool;
 	public function isDynamic():Bool;
-	public function getData():Float32Array;
+	public function getData():js.lib.Float32Array;
 	public function getBuffer():Null<WebGLBuffer>;
 	public function addUniform(name:String, size:haxe.extern.EitherType<Float, Array<Float>>):Void;
 	public function addMatrix(name:String, mat:Matrix):Void;
@@ -3750,9 +3750,9 @@ typedef DataArray = Dynamic;
 	static public function GetClipFactor(vector0:Vector3, vector1:Vector3, axis:Vector3, size:Float):Float;
 	static public function GetAngleBetweenVectors(vector0:Vector3, vector1:Vector3, normal:Vector3):Float;
 	static public function FromArray(array:ArrayLike<Float>, ?offset:Float):Vector3;
-	static public function FromFloatArray(array:Float32Array, ?offset:Float):Vector3;
+	static public function FromFloatArray(array:js.lib.Float32Array, ?offset:Float):Vector3;
 	static public function FromArrayToRef(array:ArrayLike<Float>, offset:Float, result:Vector3):Void;
-	static public function FromFloatArrayToRef(array:Float32Array, offset:Float, result:Vector3):Void;
+	static public function FromFloatArrayToRef(array:js.lib.Float32Array, offset:Float, result:Vector3):Void;
 	static public function FromFloatsToRef(x:Float, y:Float, z:Float, result:Vector3):Void;
 	static public function Zero():Vector3;
 	static public function One():Vector3;
@@ -3835,7 +3835,7 @@ typedef DataArray = Dynamic;
 	public function set(x:Float, y:Float, z:Float, w:Float):Vector4;
 	static public function FromArray(array:ArrayLike<Float>, ?offset:Float):Vector4;
 	static public function FromArrayToRef(array:ArrayLike<Float>, offset:Float, result:Vector4):Void;
-	static public function FromFloatArrayToRef(array:Float32Array, offset:Float, result:Vector4):Void;
+	static public function FromFloatArrayToRef(array:js.lib.Float32Array, offset:Float, result:Vector4):Void;
 	static public function FromFloatsToRef(x:Float, y:Float, z:Float, w:Float, result:Vector4):Void;
 	static public function Zero():Vector4;
 	static public function One():Vector4;
@@ -3930,13 +3930,13 @@ typedef DataArray = Dynamic;
 }
 @:native("BABYLON.Matrix") extern class Matrix {
 	public var updateFlag : Float;
-	public var m : Float32Array;
+	public var m : js.lib.Float32Array;
 	public function _markAsUpdated():Void;
 	public function new():Void;
 	public function isIdentity(?considerAsTextureMatrix:Bool):Bool;
 	public function determinant():Float;
-	public function toArray():Float32Array;
-	public function asArray():Float32Array;
+	public function toArray():js.lib.Float32Array;
+	public function asArray():js.lib.Float32Array;
 	public function invert():Matrix;
 	public function reset():Matrix;
 	public function add(other:Matrix):Matrix;
@@ -3950,9 +3950,9 @@ typedef DataArray = Dynamic;
 	public function removeRotationAndScaling():Matrix;
 	public function multiply(other:Matrix):Matrix;
 	public function copyFrom(other:Matrix):Matrix;
-	public function copyToArray(array:Float32Array, ?offset:Float):Matrix;
+	public function copyToArray(array:js.lib.Float32Array, ?offset:Float):Matrix;
 	public function multiplyToRef(other:Matrix, result:Matrix):Matrix;
-	public function multiplyToArray(other:Matrix, result:Float32Array, offset:Float):Matrix;
+	public function multiplyToArray(other:Matrix, result:js.lib.Float32Array, offset:Float):Matrix;
 	public function equals(value:Matrix):Bool;
 	public function clone():Matrix;
 	public function getClassName():String;
@@ -3971,7 +3971,7 @@ typedef DataArray = Dynamic;
 	public function getRotationMatrixToRef(result:Matrix):Matrix;
 	static public function FromArray(array:ArrayLike<Float>, ?offset:Float):Matrix;
 	static public function FromArrayToRef(array:ArrayLike<Float>, offset:Float, result:Matrix):Void;
-	static public function FromFloat32ArrayToRefScaled(array:Float32Array, offset:Float, scale:Float, result:Matrix):Void;
+	static public function FromFloat32ArrayToRefScaled(array:js.lib.Float32Array, offset:Float, scale:Float, result:Matrix):Void;
 	static public function FromValuesToRef(initialM11:Float, initialM12:Float, initialM13:Float, initialM14:Float, initialM21:Float, initialM22:Float, initialM23:Float, initialM24:Float, initialM31:Float, initialM32:Float, initialM33:Float, initialM34:Float, initialM41:Float, initialM42:Float, initialM43:Float, initialM44:Float, result:Matrix):Void;
 	static public var IdentityReadOnly : Matrix;
 	static public function FromValues(initialM11:Float, initialM12:Float, initialM13:Float, initialM14:Float, initialM21:Float, initialM22:Float, initialM23:Float, initialM24:Float, initialM31:Float, initialM32:Float, initialM33:Float, initialM34:Float, initialM41:Float, initialM42:Float, initialM43:Float, initialM44:Float):Matrix;
@@ -4016,8 +4016,8 @@ typedef DataArray = Dynamic;
 	static public function PerspectiveFovRHToRef(fov:Float, aspect:Float, znear:Float, zfar:Float, result:Matrix, ?isVerticalFovFixed:Bool):Void;
 	static public function PerspectiveFovWebVRToRef(fov:{ public var upDegrees : Float; public var downDegrees : Float; public var leftDegrees : Float; public var rightDegrees : Float; }, znear:Float, zfar:Float, result:Matrix, ?rightHanded:Bool):Void;
 	static public function GetFinalMatrix(viewport:Viewport, world:Matrix, view:Matrix, projection:Matrix, zmin:Float, zmax:Float):Matrix;
-	static public function GetAsMatrix2x2(matrix:Matrix):Float32Array;
-	static public function GetAsMatrix3x3(matrix:Matrix):Float32Array;
+	static public function GetAsMatrix2x2(matrix:Matrix):js.lib.Float32Array;
+	static public function GetAsMatrix3x3(matrix:Matrix):js.lib.Float32Array;
 	static public function Transpose(matrix:Matrix):Matrix;
 	static public function TransposeToRef(matrix:Matrix, result:Matrix):Void;
 	static public function Reflection(plane:Plane):Matrix;
@@ -4210,7 +4210,7 @@ typedef DataArray = Dynamic;
 	public var supportsTangents : Bool;
 	public var numTargets : Float;
 	public var numInfluencers : Float;
-	public var influences : Float32Array;
+	public var influences : js.lib.Float32Array;
 	public function getActiveTarget(index:Float):MorphTarget;
 	public function getTarget(index:Float):MorphTarget;
 	public function addTarget(target:MorphTarget):Void;
@@ -4289,7 +4289,7 @@ typedef DataArray = Dynamic;
 	public var _positions : Null<Array<Vector3>>;
 	public var _waitingActions : Dynamic;
 	public var _waitingFreezeWorldMatrix : Null<Bool>;
-	public var _bonesTransformMatrices : Null<Float32Array>;
+	public var _bonesTransformMatrices : Null<js.lib.Float32Array>;
 	public var skeleton : Null<Skeleton>;
 	public function new(name:String, ?scene:Null<Scene>):Void;
 	public function toString(?fullDetails:Bool):String;
@@ -4652,7 +4652,7 @@ typedef DataArray = Dynamic;
 	public function bakeCurrentTransformIntoVertices():Mesh;
 	public function _resetPointsArrayCache():Mesh;
 	public function applyDisplacementMap(url:String, minHeight:Float, maxHeight:Float, ?onSuccess:Mesh -> Void, ?uvOffset:Vector2, ?uvScale:Vector2):Mesh;
-	public function applyDisplacementMapFromBuffer(buffer:Uint8Array, heightMapWidth:Float, heightMapHeight:Float, minHeight:Float, maxHeight:Float, ?uvOffset:Vector2, ?uvScale:Vector2):Mesh;
+	public function applyDisplacementMapFromBuffer(buffer:js.lib.Uint8Array, heightMapWidth:Float, heightMapHeight:Float, minHeight:Float, maxHeight:Float, ?uvOffset:Vector2, ?uvScale:Vector2):Mesh;
 	public function convertToFlatShadedMesh():Mesh;
 	public function convertToUnIndexedMesh():Mesh;
 	public function flipFaces(?flipNormals:Bool):Mesh;
@@ -4698,8 +4698,8 @@ typedef DataArray = Dynamic;
 	public var sideOrientation : Float; @:optional
 	public var updatable : Bool; }, scene:Scene):Mesh;
 	static public function CreateDecal(name:String, sourceMesh:AbstractMesh, position:Vector3, normal:Vector3, size:Vector3, angle:Float):Mesh;
-	public function setPositionsForCPUSkinning():Float32Array;
-	public function setNormalsForCPUSkinning():Float32Array;
+	public function setPositionsForCPUSkinning():js.lib.Float32Array;
+	public function setNormalsForCPUSkinning():js.lib.Float32Array;
 	public function applySkeleton(skeleton:Skeleton):Mesh;
 	static public function MinMax(meshes:Array<AbstractMesh>):{ public var min : Vector3; public var max : Vector3; };
 	static public function Center(meshesOrMinMaxVector:haxe.extern.EitherType<{ public var min : Vector3; public var max : Vector3; }, Array<AbstractMesh>>):Vector3;
@@ -4807,7 +4807,7 @@ typedef DataArray = Dynamic;
 	static public function CreateTiledGround(options:{ public var xmin : Float; public var zmin : Float; public var xmax : Float; public var zmax : Float; @:optional
 	public var subdivisions : { public var w : Float; public var h : Float; }; @:optional
 	public var precision : { public var w : Float; public var h : Float; }; }):VertexData;
-	static public function CreateGroundFromHeightMap(options:{ public var width : Float; public var height : Float; public var subdivisions : Float; public var minHeight : Float; public var maxHeight : Float; public var colorFilter : Color3; public var buffer : Uint8Array; public var bufferWidth : Float; public var bufferHeight : Float; }):VertexData;
+	static public function CreateGroundFromHeightMap(options:{ public var width : Float; public var height : Float; public var subdivisions : Float; public var minHeight : Float; public var maxHeight : Float; public var colorFilter : Color3; public var buffer : js.lib.Uint8Array; public var bufferWidth : Float; public var bufferHeight : Float; }):VertexData;
 	static public function CreatePlane(options:{ @:optional
 	public var size : Float; @:optional
 	public var width : Float; @:optional
@@ -5749,7 +5749,7 @@ typedef DataArray = Dynamic;
 	function getWorldMatrix():Matrix;
 	@:optional
 	function getChildMeshes(?directDescendantsOnly:Bool):Array<AbstractMesh>;
-	function getVerticesData(kind:String):Null<haxe.extern.EitherType<Array<Float>, Float32Array>>;
+	function getVerticesData(kind:String):Null<haxe.extern.EitherType<Array<Float>, js.lib.Float32Array>>;
 	@:optional
 	function getIndices():Null<IndicesArray>;
 	@:optional
@@ -6338,7 +6338,7 @@ typedef DataArray = Dynamic;
 }
 @:native("BABYLON.BinaryFileAssetTask") extern class BinaryFileAssetTask extends AbstractAssetTask {
 	public var url : String;
-	public var data : ArrayBuffer;
+	public var data : js.lib.ArrayBuffer;
 	public function new(name:String, url:String):Void;
 }
 @:native("BABYLON.ImageAssetTask") extern class ImageAssetTask extends AbstractAssetTask {
@@ -6652,14 +6652,14 @@ typedef DataArray = Dynamic;
 	static public function GetEnvironmentBRDFTexture(scene:Scene):BaseTexture;
 }
 @:native("BABYLON.TGATools") extern class TGATools {
-	static public function GetTGAHeader(data:Uint8Array):Dynamic;
-	static public function UploadContent(gl:WebGLRenderingContext, data:Uint8Array):Void;
-	static public function _getImageData8bits(header:Dynamic, palettes:Uint8Array, pixel_data:Uint8Array, y_start:Float, y_step:Float, y_end:Float, x_start:Float, x_step:Float, x_end:Float):Uint8Array;
-	static public function _getImageData16bits(header:Dynamic, palettes:Uint8Array, pixel_data:Uint8Array, y_start:Float, y_step:Float, y_end:Float, x_start:Float, x_step:Float, x_end:Float):Uint8Array;
-	static public function _getImageData24bits(header:Dynamic, palettes:Uint8Array, pixel_data:Uint8Array, y_start:Float, y_step:Float, y_end:Float, x_start:Float, x_step:Float, x_end:Float):Uint8Array;
-	static public function _getImageData32bits(header:Dynamic, palettes:Uint8Array, pixel_data:Uint8Array, y_start:Float, y_step:Float, y_end:Float, x_start:Float, x_step:Float, x_end:Float):Uint8Array;
-	static public function _getImageDataGrey8bits(header:Dynamic, palettes:Uint8Array, pixel_data:Uint8Array, y_start:Float, y_step:Float, y_end:Float, x_start:Float, x_step:Float, x_end:Float):Uint8Array;
-	static public function _getImageDataGrey16bits(header:Dynamic, palettes:Uint8Array, pixel_data:Uint8Array, y_start:Float, y_step:Float, y_end:Float, x_start:Float, x_step:Float, x_end:Float):Uint8Array;
+	static public function GetTGAHeader(data:js.lib.Uint8Array):Dynamic;
+	static public function UploadContent(gl:WebGLRenderingContext, data:js.lib.Uint8Array):Void;
+	static public function _getImageData8bits(header:Dynamic, palettes:js.lib.Uint8Array, pixel_data:js.lib.Uint8Array, y_start:Float, y_step:Float, y_end:Float, x_start:Float, x_step:Float, x_end:Float):js.lib.Uint8Array;
+	static public function _getImageData16bits(header:Dynamic, palettes:js.lib.Uint8Array, pixel_data:js.lib.Uint8Array, y_start:Float, y_step:Float, y_end:Float, x_start:Float, x_step:Float, x_end:Float):js.lib.Uint8Array;
+	static public function _getImageData24bits(header:Dynamic, palettes:js.lib.Uint8Array, pixel_data:js.lib.Uint8Array, y_start:Float, y_step:Float, y_end:Float, x_start:Float, x_step:Float, x_end:Float):js.lib.Uint8Array;
+	static public function _getImageData32bits(header:Dynamic, palettes:js.lib.Uint8Array, pixel_data:js.lib.Uint8Array, y_start:Float, y_step:Float, y_end:Float, x_start:Float, x_step:Float, x_end:Float):js.lib.Uint8Array;
+	static public function _getImageDataGrey8bits(header:Dynamic, palettes:js.lib.Uint8Array, pixel_data:js.lib.Uint8Array, y_start:Float, y_step:Float, y_end:Float, x_start:Float, x_step:Float, x_end:Float):js.lib.Uint8Array;
+	static public function _getImageDataGrey16bits(header:Dynamic, palettes:js.lib.Uint8Array, pixel_data:js.lib.Uint8Array, y_start:Float, y_step:Float, y_end:Float, x_start:Float, x_step:Float, x_end:Float):js.lib.Uint8Array;
 }
 @:native("BABYLON.IAnimatable") interface IAnimatable {
 	var animations : Array<Animation>;
@@ -6697,10 +6697,10 @@ typedef DataArray = Dynamic;
 	static public function GetDOMTextContent(element:HTMLElement):String;
 	static public function ToDegrees(angle:Float):Float;
 	static public function ToRadians(angle:Float):Float;
-	static public function EncodeArrayBufferTobase64(buffer:ArrayBuffer):String;
+	static public function EncodeArrayBufferTobase64(buffer:js.lib.ArrayBuffer):String;
 	static public function ExtractMinAndMaxIndexed(positions:FloatArray, indices:IndicesArray, indexStart:Float, indexCount:Float, ?bias:Null<Vector2>):{ public var minimum : Vector3; public var maximum : Vector3; };
 	static public function ExtractMinAndMax(positions:FloatArray, start:Float, count:Float, ?bias:Null<Vector2>, ?stride:Float):{ public var minimum : Vector3; public var maximum : Vector3; };
-	static public function Vector2ArrayFeeder(array:haxe.extern.EitherType<Array<Vector2>, Float32Array>):Float -> Null<Vector2>;
+	static public function Vector2ArrayFeeder(array:haxe.extern.EitherType<Array<Vector2>, js.lib.Float32Array>):Float -> Null<Vector2>;
 	static public function ExtractMinAndMaxVector2(feeder:Float -> Vector2, ?bias:Null<Vector2>):{ public var minimum : Vector2; public var maximum : Vector2; };
 	static public function MakeArray(obj:Dynamic, ?allowsNullUndefined:Bool):Null<Array<Dynamic>>;
 	static public function GetPointerPrefix():String;
@@ -6711,7 +6711,7 @@ typedef DataArray = Dynamic;
 	static public function CleanUrl(url:String):String;
 	static public var PreprocessUrl : String -> String;
 	static public function LoadImage(url:Dynamic, onLoad:HTMLImageElement -> Void, onError:?String -> ?Dynamic -> Void, database:Null<Database>):HTMLImageElement;
-	static public function LoadFile(url:String, onSuccess:haxe.extern.EitherType<String, ArrayBuffer> -> ?String -> Void, ?onProgress:Dynamic -> Void, ?database:Database, ?useArrayBuffer:Bool, ?onError:?XMLHttpRequest -> ?Dynamic -> Void):IFileRequest;
+	static public function LoadFile(url:String, onSuccess:haxe.extern.EitherType<String, js.lib.ArrayBuffer> -> ?String -> Void, ?onProgress:Dynamic -> Void, ?database:Database, ?useArrayBuffer:Bool, ?onError:?XMLHttpRequest -> ?Dynamic -> Void):IFileRequest;
 	static public function LoadScript(scriptUrl:String, onSuccess:Void -> Void, ?onError:?String -> ?Dynamic -> Void):Void;
 	static public function ReadFileAsDataURL(fileToLoad:Blob, callback:Dynamic -> Void, progressCallback:ProgressEvent -> Dynamic):IFileRequest;
 	static public function ReadFile(fileToLoad:File, callback:Dynamic -> Void, ?progressCallBack:ProgressEvent -> Dynamic, ?useArrayBuffer:Bool):IFileRequest;
@@ -6729,7 +6729,7 @@ typedef DataArray = Dynamic;
 	static public function ValidateXHRData(xhr:XMLHttpRequest, ?dataType:Float):Bool;
 	static public function RandomId():String;
 	static public function IsBase64(uri:String):Bool;
-	static public function DecodeBase64(uri:String):ArrayBuffer;
+	static public function DecodeBase64(uri:String):js.lib.ArrayBuffer;
 	static public var errorsCount : Float;
 	static public var OnNewCacheEntry : String -> Void;
 	static public var NoneLogLevel : Float;
@@ -7073,12 +7073,12 @@ typedef DataArray = Dynamic;
 	public function getClassName():String;
 }
 @:native("BABYLON.DevicePose") interface DevicePose {
-	var position : Null<Float32Array>;
-	var linearVelocity : Null<Float32Array>;
-	var linearAcceleration : Null<Float32Array>;
-	var orientation : Null<Float32Array>;
-	var angularVelocity : Null<Float32Array>;
-	var angularAcceleration : Null<Float32Array>;
+	var position : Null<js.lib.Float32Array>;
+	var linearVelocity : Null<js.lib.Float32Array>;
+	var linearAcceleration : Null<js.lib.Float32Array>;
+	var orientation : Null<js.lib.Float32Array>;
+	var angularVelocity : Null<js.lib.Float32Array>;
+	var angularAcceleration : Null<js.lib.Float32Array>;
 }
 @:native("BABYLON.PoseControlled") interface PoseControlled {
 	var position : Vector3;
@@ -7534,7 +7534,7 @@ typedef DataArray = Dynamic;
 	public function clone():Null<BaseTexture>;
 	public var textureType : Float;
 	public var textureFormat : Float;
-	public function readPixels(?faceIndex:Float):Null<ArrayBufferView>;
+	public function readPixels(?faceIndex:Float):Null<js.lib.ArrayBufferView>;
 	public function releaseInternalTexture():Void;
 	public var sphericalPolynomial : Null<SphericalPolynomial>;
 	public var _lodTextureHigh : Null<BaseTexture>;
@@ -7612,9 +7612,9 @@ typedef DataArray = Dynamic;
 	public var _initialSlot : Float;
 	public var _designatedSlot : Float;
 	public var _dataSource : Float;
-	public var _buffer : Null<haxe.extern.EitherType<ArrayBuffer, HTMLImageElement>>;
-	public var _bufferView : Null<ArrayBufferView>;
-	public var _bufferViewArray : Null<Array<ArrayBufferView>>;
+	public var _buffer : Null<haxe.extern.EitherType<js.lib.ArrayBuffer, HTMLImageElement>>;
+	public var _bufferView : Null<js.lib.ArrayBufferView>;
+	public var _bufferViewArray : Null<Array<js.lib.ArrayBufferView>>;
 	public var _size : Float;
 	public var _extension : String;
 	public var _files : Null<Array<String>>;
@@ -7696,18 +7696,18 @@ typedef DataArray = Dynamic;
 }
 @:native("BABYLON.RawTexture") extern class RawTexture extends Texture {
 	public var format : Float;
-	public function new(data:ArrayBufferView, width:Float, height:Float, format:Float, scene:Scene, ?generateMipMaps:Bool, ?invertY:Bool, ?samplingMode:Float, ?type:Float):Void;
-	public function update(data:ArrayBufferView):Void;
-	static public function CreateLuminanceTexture(data:ArrayBufferView, width:Float, height:Float, scene:Scene, ?generateMipMaps:Bool, ?invertY:Bool, ?samplingMode:Float):RawTexture;
-	static public function CreateLuminanceAlphaTexture(data:ArrayBufferView, width:Float, height:Float, scene:Scene, ?generateMipMaps:Bool, ?invertY:Bool, ?samplingMode:Float):RawTexture;
-	static public function CreateAlphaTexture(data:ArrayBufferView, width:Float, height:Float, scene:Scene, ?generateMipMaps:Bool, ?invertY:Bool, ?samplingMode:Float):RawTexture;
-	static public function CreateRGBTexture(data:ArrayBufferView, width:Float, height:Float, scene:Scene, ?generateMipMaps:Bool, ?invertY:Bool, ?samplingMode:Float, ?type:Float):RawTexture;
-	static public function CreateRGBATexture(data:ArrayBufferView, width:Float, height:Float, scene:Scene, ?generateMipMaps:Bool, ?invertY:Bool, ?samplingMode:Float, ?type:Float):RawTexture;
+	public function new(data:js.lib.ArrayBufferView, width:Float, height:Float, format:Float, scene:Scene, ?generateMipMaps:Bool, ?invertY:Bool, ?samplingMode:Float, ?type:Float):Void;
+	public function update(data:js.lib.ArrayBufferView):Void;
+	static public function CreateLuminanceTexture(data:js.lib.ArrayBufferView, width:Float, height:Float, scene:Scene, ?generateMipMaps:Bool, ?invertY:Bool, ?samplingMode:Float):RawTexture;
+	static public function CreateLuminanceAlphaTexture(data:js.lib.ArrayBufferView, width:Float, height:Float, scene:Scene, ?generateMipMaps:Bool, ?invertY:Bool, ?samplingMode:Float):RawTexture;
+	static public function CreateAlphaTexture(data:js.lib.ArrayBufferView, width:Float, height:Float, scene:Scene, ?generateMipMaps:Bool, ?invertY:Bool, ?samplingMode:Float):RawTexture;
+	static public function CreateRGBTexture(data:js.lib.ArrayBufferView, width:Float, height:Float, scene:Scene, ?generateMipMaps:Bool, ?invertY:Bool, ?samplingMode:Float, ?type:Float):RawTexture;
+	static public function CreateRGBATexture(data:js.lib.ArrayBufferView, width:Float, height:Float, scene:Scene, ?generateMipMaps:Bool, ?invertY:Bool, ?samplingMode:Float, ?type:Float):RawTexture;
 }
 @:native("BABYLON.RawTexture3D") extern class RawTexture3D extends Texture {
 	public var format : Float;
-	public function new(data:ArrayBufferView, width:Float, height:Float, depth:Float, format:Float, scene:Scene, ?generateMipMaps:Bool, ?invertY:Bool, ?samplingMode:Float):Void;
-	public function update(data:ArrayBufferView):Void;
+	public function new(data:js.lib.ArrayBufferView, width:Float, height:Float, depth:Float, format:Float, scene:Scene, ?generateMipMaps:Bool, ?invertY:Bool, ?samplingMode:Float):Void;
+	public function update(data:js.lib.ArrayBufferView):Void;
 }
 @:native("BABYLON.RefractionTexture") extern class RefractionTexture extends RenderTargetTexture {
 	public var refractionPlane : Plane;
@@ -7841,7 +7841,7 @@ typedef DataArray = Dynamic;
 	static public var DecoderAvailable : Bool;
 	public function new():Void;
 	public function dispose():Void;
-	public function decodeMeshAsync(data:ArrayBufferView, attributes:{ }):Promise<VertexData>;
+	public function decodeMeshAsync(data:js.lib.ArrayBufferView, attributes:{ }):Promise<VertexData>;
 }
 @:native("BABYLON.BoxParticleEmitter") extern class BoxParticleEmitter implements IParticleEmitterType {
 	public var direction1 : Vector3;
@@ -8035,24 +8035,24 @@ typedef DataArray = Dynamic;
 	var dataPosition : Float;
 }
 @:native("BABYLON.HDRTools") extern class HDRTools {
-	static public function RGBE_ReadHeader(uint8array:Uint8Array):HDRInfo;
-	static public function GetCubeMapTextureData(buffer:ArrayBuffer, size:Float):CubeMapInfo;
-	static public function RGBE_ReadPixels(uint8array:Uint8Array, hdrInfo:HDRInfo):Float32Array;
+	static public function RGBE_ReadHeader(uint8array:js.lib.Uint8Array):HDRInfo;
+	static public function GetCubeMapTextureData(buffer:js.lib.ArrayBuffer, size:Float):CubeMapInfo;
+	static public function RGBE_ReadPixels(uint8array:js.lib.Uint8Array, hdrInfo:HDRInfo):js.lib.Float32Array;
 }
 @:native("BABYLON.CubeMapInfo") interface CubeMapInfo {
-	var front : Null<ArrayBufferView>;
-	var back : Null<ArrayBufferView>;
-	var left : Null<ArrayBufferView>;
-	var right : Null<ArrayBufferView>;
-	var up : Null<ArrayBufferView>;
-	var down : Null<ArrayBufferView>;
+	var front : Null<js.lib.ArrayBufferView>;
+	var back : Null<js.lib.ArrayBufferView>;
+	var left : Null<js.lib.ArrayBufferView>;
+	var right : Null<js.lib.ArrayBufferView>;
+	var up : Null<js.lib.ArrayBufferView>;
+	var down : Null<js.lib.ArrayBufferView>;
 	var size : Float;
 	var format : Float;
 	var type : Float;
 	var gammaSpace : Bool;
 }
 @:native("BABYLON.PanoramaToCubeMapTools") extern class PanoramaToCubeMapTools {
-	static public function ConvertPanoramaToCubemap(float32Array:Float32Array, inputWidth:Float, inputHeight:Float, size:Float):CubeMapInfo;
+	static public function ConvertPanoramaToCubemap(float32Array:js.lib.Float32Array, inputWidth:Float, inputHeight:Float, size:Float):CubeMapInfo;
 }
 @:native("BABYLON.CustomProceduralTexture") extern class CustomProceduralTexture extends ProceduralTexture {
 	public function new(name:String, texturePath:Dynamic, size:Float, scene:Scene, ?fallbackTexture:Texture, ?generateMipMaps:Bool):Void;
